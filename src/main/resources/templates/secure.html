@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>private Information</title>
+</head>
+<body>
+    <h1>Private Information of User</h1>
+    <p>[[${user.lastName}]], [[${user.firstName}]]</p>
+    <p>Email: [[${user.email}]]</p>
+
+    <h1>Role of user</h1>
+    <div th:each="role : ${roles}">
+        <p th:text="${role.}"
+    </div>
+</body>
+</html>
