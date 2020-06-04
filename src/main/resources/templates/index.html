@@ -6,7 +6,15 @@
 </head>
 <body>
     <h2>Welcome page</h2>
-    <a href="/admin">Admin Page</a><br/>
+    <button>
+        <a href="/admin">Admin Page</a>
+    </button>
+    <button>
+        <a href="/secure">Users Information</a>
+    </button>
+    <button>
+        <a href="/register">Registration</a>
+    </button>
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Logout">
     </form>

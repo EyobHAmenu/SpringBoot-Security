@@ -19,10 +19,12 @@ public class SpringSecurityJdbcDataSource {
             Role userRole = new Role("bart", "ROLE_USER");
             userRepository.save(user);
             roleRepository.save(userRole);
-            User admin = new User("super", "super@domain.com", "super","Super", "Man", true);
-            Role adminRole = new Role("super", "ROLE_ADMIN");
+            User admin = new User("eyob", "super@domain.com", "eyob","Eyob", "Amenu", true);
+            Role adminRole1 = new Role("eyob", "ROLE_ADMIN");
+            Role adminRole2 = new Role("eyob", "ROLE_USER");
             userRepository.save(admin);
-            roleRepository.save(adminRole);
+            roleRepository.save(adminRole1);
+            roleRepository.save(adminRole2);
         };
     }
 }

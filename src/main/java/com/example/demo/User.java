@@ -3,6 +3,7 @@ package com.example.demo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "users_db")
@@ -12,18 +13,23 @@ public class User {
     private long id;
 
     @Column (name = "username")
+    @NotEmpty
     private String username;
 
     @Column (name = "email")
+    @NotEmpty
     private String email;
 
     @Column (name = "password")
+    @NotEmpty
     private String password;
 
     @Column (name = "first_name")
+    @NotEmpty
     private String firstName;
 
     @Column (name = "last_name")
+    @NotEmpty
     private String lastName;
 
     @Column (name = "enabled")
@@ -74,6 +80,10 @@ public class User {
     public void setPassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         this.password = passwordEncoder.encode(password);
+    }
+
+    public String clearPassword(){
+        return "";
     }
 
     public String getFirstName() {

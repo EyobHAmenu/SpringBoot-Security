@@ -7,5 +7,5 @@ import java.util.Set;
 
 @Repository
 public interface RoleRepository extends CrudRepository<Role, Long> {
-    Set<Role> findAllByUserName(String userName);
+    Set<Role> findAllByUsername(String userName);
 }
