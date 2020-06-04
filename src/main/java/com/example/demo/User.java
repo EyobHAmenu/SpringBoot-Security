@@ -83,7 +83,8 @@ public class User {
     }
 
     public String clearPassword(){
-        return "";
+        password = "";
+        return password;
     }
 
     public String getFirstName() {

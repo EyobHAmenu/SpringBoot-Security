@@ -21,7 +21,9 @@ public class HomeController {
     RoleRepository roleRepository;
 
     @RequestMapping("/")
-    public String index() {
+    public String index(Principal principal, Model model) {
+        String userName = principal.getName();
+        model.addAttribute("username", userRepository.findByUsername(userName));
         return "index";
     }
 
@@ -36,7 +38,9 @@ public class HomeController {
     }
 
     @RequestMapping("/admin")
-    public String admin() {
+    public String admin(Principal principal, Model model) {
+        String userName = principal.getName();
+        model.addAttribute("username", userRepository.findByUsername(userName));
         return "admin";
     }
 
@@ -49,15 +53,18 @@ public class HomeController {
     }
 
     @RequestMapping("/register")
-    public String registrationPage(Model model){
+    public String registrationPage(Principal principal,Model model){
+        String userName = principal.getName();
+        model.addAttribute("user", userRepository.findByUsername(userName));
         model.addAttribute("newUser", new User());
         return "registrationForm";
     }
 
     @PostMapping("/processForm")
-    public String processForm(@Valid @ModelAttribute("newUser") User user, BindingResult result){
+    public String processForm(@Valid @ModelAttribute("newUser") User user, BindingResult result, Model model){
         if(result.hasErrors()){
             user.clearPassword();
+            model.addAttribute("newUser", user);
             return "registrationForm";
         }
         else{
@@ -65,7 +72,7 @@ public class HomeController {
             user.setEnabled(true);
             userRepository.save(user);
             roleRepository.save(role);
-            return "redirect:/";
+            return "successPage";
 
         }
     }

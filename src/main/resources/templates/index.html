@@ -15,6 +15,9 @@
     <button>
         <a href="/register">Registration</a>
     </button>
+    <button>
+        <strong>Hello, [[${username.firstName}]]</strong>
+    </button>
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Logout">
     </form>
