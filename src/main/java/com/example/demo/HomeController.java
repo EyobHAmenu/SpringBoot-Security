@@ -61,8 +61,11 @@ public class HomeController {
     }
 
     @PostMapping("/processForm")
-    public String processForm(@Valid @ModelAttribute("newUser") User user, BindingResult result, Model model){
+    public String processForm(@Valid @ModelAttribute("newUser") User user, BindingResult result,
+                              Model model, Principal principal){
         if(result.hasErrors()){
+            String userName = principal.getName();
+            model.addAttribute("user", userRepository.findByUsername(userName));
             user.clearPassword();
             model.addAttribute("newUser", user);
             return "registrationForm";
